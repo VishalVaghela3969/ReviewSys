@@ -1,0 +1,50 @@
+<odoo>
+    <data>
+        <!-- Tree view for Reviews Comments -->
+        <record id="reviews_comments_tree_view" model="ir.ui.view">
+            <field name="name">reviews.comments.tree.view</field>
+            <field name="model">reviews.comments</field>
+            <field name="arch" type="xml">
+                <tree string="Reviews Comments">
+                    <field name="review_id"/>
+                    <field name="user_id"/>
+                    <field name="comment_text"/>
+<!--                    <field name="comment_date"/>-->
+                    <!-- Add more fields here -->
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form view for Reviews Comments -->
+        <record id="reviews_comments_form_view" model="ir.ui.view">
+            <field name="name">reviews.comments.form.view</field>
+            <field name="model">reviews.comments</field>
+            <field name="arch" type="xml">
+                <form string="Reviews Comments">
+                    <sheet>
+                        <group>
+                            <field name="review_id"/>
+                            <field name="user_id"/>
+                            <field name="comment_text"/>
+<!--                            <field name="comment_date"/>-->
+                            <!-- Add more fields here -->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <!-- Action for Reviews Comments Tree View -->
+        <record id="reviews_comments_tree_action" model="ir.actions.act_window">
+            <field name="name">Reviews Comments</field>
+            <field name="res_model">reviews.comments</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menu Item for Reviews Comments -->
+        <menuitem name="Reviews Comments" id="menu_reviews_comments_list" parent="demo_1.business"
+                  action="reviews_comments_tree_action"/>
+
+    </data>
+</odoo>

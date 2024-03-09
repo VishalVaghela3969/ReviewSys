@@ -1,0 +1,55 @@
+<odoo>
+    <data>
+
+        <!-- Form view for Product -->
+        <record id="product_form_view" model="ir.ui.view">
+            <field name="name">product.form.view</field>
+            <field name="model">product</field>
+            <field name="arch" type="xml">
+                <form string="Product">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                            <field name="price"/>
+                            <field name="category_id"/>
+                            <field name="image" widget="image"/>
+                            <!-- Add more fields here -->
+                        </group>
+                        <notebook>
+                            <page string="Business">
+                                <field name="business_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree view for Product -->
+        <record id="product_tree_view" model="ir.ui.view">
+            <field name="name">product.tree.view</field>
+            <field name="model">product</field>
+            <field name="arch" type="xml">
+                <tree string="Products">
+                    <field name="name"/>
+                    <field name="price"/>
+                    <field name="category_id"/>
+                    <!-- Add more fields here -->
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action for Product Tree View -->
+        <record id="action_product_form_action" model="ir.actions.act_window">
+            <field name="name">Products</field>
+            <field name="res_model">product</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menu Item for Product -->
+        <menuitem name="Products" id="demo_1.product" parent="demo_1.business"
+                  action="action_product_form_action"/>
+
+    </data>
+</odoo>

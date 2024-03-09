@@ -1,0 +1,46 @@
+<odoo>
+    <data>
+        <!-- Tree view for Business Review -->
+        <record model="ir.ui.view" id="review_tree_view">
+            <field name="name">business.review.tree</field>
+            <field name="model">business.review</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="business_id"/>
+                    <field name="rating"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form view for Business Review -->
+        <record model="ir.ui.view" id="review_form_view">
+            <field name="name">business.review.form</field>
+            <field name="model">business.review</field>
+            <field name="arch" type="xml">
+                <form string="Business Review">
+                    <sheet>
+                        <group>
+                            <field name="business_id"/>
+                            <field name="user_id"/>
+                            <field name="rating" widget="priority"/>
+                            <field name="review_text"/>
+<!--                            <field name="review_date"/>-->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action for Business Review -->
+        <record model="ir.actions.act_window" id="review_form_action">
+            <field name="name">Review Business</field>
+            <field name="res_model">business.review</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menu Item for Business Review -->
+        <menuitem name="Review" id="demo_1.business_review" parent="demo_1.business"
+                  action="review_form_action"/>
+
+    </data>
+</odoo>

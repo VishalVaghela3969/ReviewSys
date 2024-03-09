@@ -1,0 +1,174 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="business_tree_view">
+            <field name="name">business.form.view</field>
+            <field name="model">business</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="country_id"/>
+                    <field name="email"/>
+                    <field name="average_rating"/>
+                    <field name="rating_count"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="business_form_view" model="ir.ui.view">
+            <field name="name">business.form.view</field>
+            <field name="model">business</field>
+            <field name="arch" type="xml">
+                <form string="Create Menu">
+                    <sheet>
+                        <notebook>
+                            <!-- General Information Tab -->
+                            <page string="General Information">
+                                <group>
+                                    <group>
+                                        <field name="name"/>
+                                        <field name="contact_info"/>
+                                        <field name="website"/>
+                                        <field name="email"/>
+                                        <field name="phone_number"/>
+                                    </group>
+                                    <group>
+                                        <!--                                        <field name="opening_hours"/>-->
+                                        <field name="day_of_week"/>
+                                        <field name="opening_time"/>
+                                        <field name="closing_time"/>
+                                        <field name="status"/>
+                                        <field name="featured"/>
+                                        <field name="business_logo" widget="image" class="oe_avatar"/>
+
+                                    </group>
+                                </group>
+                            </page>
+
+                            <!-- Address Information Tab -->
+                            <page string="Address Information">
+                                <group>
+                                    <field name="country_id"/>
+                                    <field name="state_id"/>
+                                    <field name="city"/>
+                                    <field name="street"/>
+
+                                </group>
+                            </page>
+
+                            <!-- Additional Information Tab -->
+                            <page string="Additional Information">
+                                <group>
+                                    <field name="description" widget="html"/>
+                                    <field name="description_short"/>
+                                    <field name="keywords"/>
+                                </group>
+                            </page>
+
+                            <!-- Ratings and Tags Tab -->
+                            <page string="Ratings and Tags">
+                                <group>
+                                    <field name="average_rating"/>
+                                    <field name="rating_count"/>
+                                    <!--                                    <field name="tags" widget="many2many_tags"/>-->
+                                </group>
+                            </page>
+
+                            <!-- Social Media and Owners Tab -->
+                            <page string="Social Media and Owners">
+                                <group>
+                                    <field name="social_media_links"/>
+                                    <!--                                    <field name="owners" widget="many2many_tags"/>-->
+                                </group>
+                            </page>
+
+                            <!-- Payment Methods Tab -->
+                            <page string="Payment Methods">
+                                <group>
+                                    <!--                                    <field name="payment_methods" widget="many2many_tags"/>-->
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Kanban view for Business -->
+         <record id="business_view_kanban" model="ir.ui.view">
+            <field name="name">business.kanban</field>
+            <field name="model">business</field>
+            <field name="priority">1</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile">
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_content oe_kanban_global_click">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <strong><field name="name"/></strong>
+                                    </div>
+                                    <div class="col-6">
+                                        <span class="float-end"><field name="country_id"/></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+         <!-- Calendar view for Business -->
+       <record id="business_view_calendar" model="ir.ui.view">
+            <field name="name">business.view.calendar</field>
+            <field name="model">business</field>
+            <field name="priority" eval="2"/>
+            <field name="arch" type="xml">
+                <calendar string="Business Calendar" date_start="create_date" color="average_rating">
+                    <field name="website"/>
+                    <field name="name" widget="image" avatar_field="business_logo"/>
+                    <field name="status" filters="1" invisible="1"/>
+                </calendar>
+            </field>
+        </record>
+
+        <!-- Graph view for Business -->
+        <record model="ir.ui.view" id="business_graph_view">
+            <field name="name">business.graph.view</field>
+            <field name="model">business</field>
+            <field name="arch" type="xml">
+                <graph>
+                    <field name="country_id"/>
+                    <field name="average_rating" type="measure"/>
+                    <field name="rating_count" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <!-- Pivot view for Business -->
+        <record model="ir.ui.view" id="business_pivot_view">
+            <field name="name">business.pivot.view</field>
+            <field name="model">business</field>
+            <field name="arch" type="xml">
+                <pivot>
+                    <field name="country_id"/>
+                    <field name="average_rating" type="measure"/>
+                    <field name="rating_count" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="business_form_action">
+            <field name="name">Business Table</field>
+            <field name="res_model">business</field>
+            <field name="view_mode">tree,form,kanban,calendar,pivot,graph</field>
+        </record>
+
+
+        <menuitem name="business" id="demo_1.business" parent="demo_1.menu_root"/>
+
+        <menuitem name="Business" id="demo_1.business_table" parent="demo_1.business"
+                  action="business_form_action"/>
+
+    </data>
+</odoo>

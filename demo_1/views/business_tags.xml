@@ -1,0 +1,46 @@
+<odoo>
+    <data>
+
+        <!-- Form view for Business Categories -->
+        <record id="business_categories_form_view" model="ir.ui.view">
+            <field name="name">business.categories.form.view</field>
+            <field name="model">business.categories</field>
+            <field name="arch" type="xml">
+                <form string="Business Categories">
+                    <sheet>
+                        <group>
+                            <field name="business_id"/>
+                            <field name="category_id"/>
+                            <!-- Add more fields here -->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree view for Business Categories -->
+        <record id="business_categories_tree_view" model="ir.ui.view">
+            <field name="name">business.categories.tree.view</field>
+            <field name="model">business.categories</field>
+            <field name="arch" type="xml">
+                <tree string="Business Categories">
+                    <field name="business_id"/>
+                    <field name="category_id"/>
+                    <!-- Add more fields here -->
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action for Business Categories Tree View -->
+        <record id="business_categories_form_action" model="ir.actions.act_window">
+            <field name="name">Business Categories</field>
+            <field name="res_model">business.categories</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menu Item for Business Categories -->
+        <menuitem name="Business Categories" id="menu_business_categories_list" parent="demo_1.business"
+                  action="business_categories_form_action"/>
+
+    </data>
+</odoo>

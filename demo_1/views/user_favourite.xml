@@ -1,0 +1,50 @@
+<odoo>
+    <data>
+
+        <!-- Form view for User Favorites -->
+        <record id="user_favorites_form_view" model="ir.ui.view">
+            <field name="name">user.favorites.form.view</field>
+            <field name="model">user.favorites</field>
+            <field name="arch" type="xml">
+                <form string="User Favorites">
+                    <sheet>
+                        <group>
+                            <field name="user_id"/>
+                            <field name="business_id"/>
+                            <field name="product_id"/>
+                            <field name="favorite_type"/>
+                            <!-- Add more fields here -->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree view for User Favorites -->
+        <record id="user_favorites_tree_view" model="ir.ui.view">
+            <field name="name">user.favorites.tree.view</field>
+            <field name="model">user.favorites</field>
+            <field name="arch" type="xml">
+                <tree string="User Favorites">
+                    <field name="user_id"/>
+                    <field name="business_id"/>
+                    <field name="product_id"/>
+                    <field name="favorite_type"/>
+                    <!-- Add more fields here -->
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action for User Favorites Tree View -->
+        <record id="user_favorites_tree_action" model="ir.actions.act_window">
+            <field name="name">User Favorites</field>
+            <field name="res_model">user.favorites</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menu Item for User Favorites -->
+        <menuitem name="User Favorites" id="menu_user_favorites_list" parent="demo_1.business"
+                  action="user_favorites_tree_action"/>
+
+    </data>
+</odoo>

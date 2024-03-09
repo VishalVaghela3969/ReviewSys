@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+demo_1.access_demo_1_demo_1,access_demo_1_demo_1,demo_1.model_demo_1_demo_1,base.group_user,1,1,1,1
+demo_1.access_business,access_business,demo_1.model_business,base.group_user,1,1,1,1
+demo_1.access_user,access_user,demo_1.model_user,base.group_user,1,1,1,1
+demo_1.access_business_review,access_business_review,demo_1.model_business_review,base.group_user,1,1,1,1
+demo_1.access_category,access_category,demo_1.model_category,base.group_user,1,1,1,1
+demo_1.access_product,access_product,demo_1.model_product,base.group_user,1,1,1,1
+demo_1.access_image,access_image,demo_1.model_image,base.group_user,1,1,1,1
+demo_1.access_tag,access_tag,demo_1.model_tag,base.group_user,1,1,1,1
+demo_1.access_business_categories,access_business_categories,demo_1.model_business_categories,base.group_user,1,1,1,1
+demo_1.access_reviews_comments,access_reviews_comments,demo_1.model_reviews_comments,base.group_user,1,1,1,1
+demo_1.access_business_owners,access_business_owners,demo_1.model_business_owners,base.group_user,1,1,1,1
+demo_1.access_user_favorites,access_user_favorites,demo_1.model_user_favorites,base.group_user,1,1,1,1

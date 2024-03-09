@@ -1,0 +1,43 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="userdata_tree_view">
+            <field name="name">userdata.form.view</field>
+            <field name="model">user</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="username"/>
+                    <field name="email"/>
+                    <!--                    <field name="email"/>-->
+                </tree>
+            </field>
+        </record>
+
+        <record id="userdata_form_view" model="ir.ui.view">
+            <field name="name">userdata.form.view</field>
+            <field name="model">user</field>
+            <field name="arch" type="xml">
+                <form string="User Data">
+                    <sheet>
+                        <group>
+                            <field name="username"/>
+                            <field name="email"/>
+                            <field name="password"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+         <record model="ir.actions.act_window" id="userdata_form_action">
+            <field name="name">User Table</field>
+            <field name="res_model">user</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="User" id="demo_1.user" parent="demo_1.menu_root"/>
+
+        <menuitem name="User" id="demo_1.user_table" parent="demo_1.user"
+                  action="userdata_form_action"/>
+
+    </data>
+</odoo>

@@ -1,0 +1,48 @@
+<odoo>
+    <data>
+
+        <!-- Form view for Business Owners -->
+        <record id="business_owners_form_view" model="ir.ui.view">
+            <field name="name">business.owners.form.view</field>
+            <field name="model">business.owners</field>
+            <field name="arch" type="xml">
+                <form string="Business Owners">
+                    <sheet>
+                        <group>
+                            <field name="business_id"/>
+                            <field name="user_id"/>
+                            <field name="is_admin"/>
+                            <!-- Add more fields here -->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree view for Business Owners -->
+        <record id="business_owners_tree_view" model="ir.ui.view">
+            <field name="name">business.owners.tree.view</field>
+            <field name="model">business.owners</field>
+            <field name="arch" type="xml">
+                <tree string="Business Owners">
+                    <field name="business_id"/>
+                    <field name="user_id"/>
+                    <field name="is_admin"/>
+                    <!-- Add more fields here -->
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action for Business Owners Tree View -->
+        <record id="business_owners_tree_action" model="ir.actions.act_window">
+            <field name="name">Business Owners</field>
+            <field name="res_model">business.owners</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menu Item for Business Owners -->
+        <menuitem name="Business Owners" id="menu_business_owners_list" parent="demo_1.business"
+                  action="business_owners_tree_action"/>
+
+    </data>
+</odoo>

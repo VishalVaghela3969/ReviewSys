@@ -1,0 +1,46 @@
+<odoo>
+    <data>
+
+        <!-- Form view for Category -->
+        <record id="category_form_view" model="ir.ui.view">
+            <field name="name">category.form.view</field>
+            <field name="model">category</field>
+            <field name="arch" type="xml">
+                <form string="Category">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                            <!-- Add more fields here -->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree view for Category -->
+        <record id="category_tree_view" model="ir.ui.view">
+            <field name="name">product.category.view</field>
+            <field name="model">category</field>
+            <field name="arch" type="xml">
+                <tree string="Categories">
+                    <field name="name"/>
+                    <field name="description"/>
+                    <!-- Add more fields here -->
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action for Category Tree View -->
+        <record id="category_form_action" model="ir.actions.act_window">
+            <field name="name">Categories</field>
+            <field name="res_model">category</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menu Item for Category -->
+        <menuitem name="Categories" id="demo_1.category" parent="demo_1.business"
+                  action="category_form_action"/>
+
+    </data>
+</odoo>
