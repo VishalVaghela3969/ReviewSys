@@ -16,6 +16,7 @@ class Business(models.Model):
         ('sat', 'Saturday'),
         ('sun', 'Sunday')
     ]
+    seq_name = fields.Char('product seq')
     name = fields.Char(string='Name')
     description = fields.Text(string='Description')
     # location = fields.Char(string='Location')
@@ -34,8 +35,8 @@ class Business(models.Model):
     # owners = fields.Many2many('res.partner', string='Owners')
     social_media_links = fields.Text(string='Social Media Links')
     # tags = fields.Many2many('business.tag', string='Tags')
-    rating_count = fields.Integer(string='Rating Count')
-    average_rating = fields.Float(string='Average Rating')
+    rating_count = fields.Integer(string='Rating Count',compute='_compute_ratings',store=True)
+    average_rating = fields.Float(string='Average Rating',compute='_compute_ratings',store=True)
     status = fields.Selection([('active', 'Active'), ('inactive', 'Inactive'), ('renovation', 'Under Renovation')],
                               string='Status', default='active')
     featured = fields.Boolean(string='Featured')
@@ -44,6 +45,38 @@ class Business(models.Model):
     business_logo = fields.Image(string='Business Logo', max_width=128, max_height=128, attachment=True)
     description_short = fields.Text(string='Short Description')
     keywords = fields.Char(string='Keywords')
+    ratings = fields.One2many('business.review', 'business_id', string='Ratings')
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        records = super(Business, self).create(vals_list)
+        for rec in records:
+            seq = self.env['ir.sequence'].next_by_code('business.seq')
+            rec.seq_name = seq
+            # Create tags from keywords
+            self.env['tag'].create_tags_from_keywords(rec)
+        return records
+
+    def write(self, vals):
+        res = super(Business, self).write(vals)
+        for rec in self:
+            # Create tags from keywords
+            self.env['tag'].create_tags_from_keywords(rec)
+            if not rec.seq_name:
+                seq = self.env['ir.sequence'].next_by_code('business.seq')
+                rec.seq_name = seq
+        return res
+
+    @api.depends('ratings.rating')
+    def _compute_ratings(self):
+        for business in self:
+            rating_count = len(business.ratings)
+            if rating_count > 0:
+                total_rating = sum(int(rating.rating) for rating in business.ratings)
+                business.average_rating = total_rating / rating_count
+            else:
+                business.average_rating = 0
+            business.rating_count = rating_count
 
     @api.onchange('country_id')
     def onchange_country_id(self):

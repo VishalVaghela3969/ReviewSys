@@ -9,6 +9,16 @@
                 <form string="Business Owners">
                     <sheet>
                         <group>
+                            <group>
+                                <div class="oe_title">
+                                    <h1>
+                                        <field name="seq_name" readonly="1"/>
+                                    </h1>
+                                </div>
+                            </group>
+                            <group>
+
+                            </group>
                             <field name="business_id"/>
                             <field name="user_id"/>
                             <field name="is_admin"/>
@@ -25,6 +35,7 @@
             <field name="model">business.owners</field>
             <field name="arch" type="xml">
                 <tree string="Business Owners">
+                    <field name="seq_name"/>
                     <field name="business_id"/>
                     <field name="user_id"/>
                     <field name="is_admin"/>

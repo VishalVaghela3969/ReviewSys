@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 
 class UserFavorites(models.Model):
@@ -6,6 +6,7 @@ class UserFavorites(models.Model):
     _description = 'User Favorites'
     _rec_name = 'user_id'
 
+    seq_name = fields.Char('product seq')
     user_id = fields.Many2one('user', string='User')
     business_id = fields.Many2one('business', string='Business')
     product_id = fields.Many2one('product', string='Product')
@@ -16,3 +17,22 @@ class UserFavorites(models.Model):
     ], string='Favorite Type')
 
     # Add more fields or methods as needed
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        records = super(UserFavorites, self).create(vals_list)
+        for rec in records:
+            seq = self.env['ir.sequence'].next_by_code('user.favourite.seq')
+            rec.seq_name = seq
+            # Create tags from keywords
+        return records
+
+    def write(self, vals):
+        res = super(UserFavorites, self).write(vals)
+        for rec in self:
+            # Create tags from keywords
+            if not rec.seq_name:
+                seq = self.env['ir.sequence'].next_by_code('user.favourite.seq')
+                rec.seq_name = seq
+        return res
+

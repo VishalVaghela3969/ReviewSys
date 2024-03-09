@@ -5,6 +5,7 @@
             <field name="model">user</field>
             <field name="arch" type="xml">
                 <tree>
+                    <field name="seq_name"/>
                     <field name="username"/>
                     <field name="email"/>
                     <!--                    <field name="email"/>-->
@@ -19,6 +20,16 @@
                 <form string="User Data">
                     <sheet>
                         <group>
+                            <group>
+                                <div class="oe_title">
+                                    <h1>
+                                        <field name="seq_name" readonly="1"/>
+                                    </h1>
+                                </div>
+                            </group>
+                            <group>
+
+                            </group>
                             <field name="username"/>
                             <field name="email"/>
                             <field name="password"/>
@@ -28,7 +39,7 @@
             </field>
         </record>
 
-         <record model="ir.actions.act_window" id="userdata_form_action">
+        <record model="ir.actions.act_window" id="userdata_form_action">
             <field name="name">User Table</field>
             <field name="res_model">user</field>
             <field name="view_mode">tree,form</field>

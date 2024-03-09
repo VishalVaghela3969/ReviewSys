@@ -6,6 +6,7 @@
             <field name="model">business.review</field>
             <field name="arch" type="xml">
                 <tree>
+                    <field name="seq_name"/>
                     <field name="business_id"/>
                     <field name="rating"/>
                 </tree>
@@ -20,11 +21,21 @@
                 <form string="Business Review">
                     <sheet>
                         <group>
+                            <group>
+                                <div class="oe_title">
+                                    <h1>
+                                        <field name="seq_name" readonly="1"/>
+                                    </h1>
+                                </div>
+                            </group>
+                            <group>
+
+                            </group>
                             <field name="business_id"/>
                             <field name="user_id"/>
                             <field name="rating" widget="priority"/>
                             <field name="review_text"/>
-<!--                            <field name="review_date"/>-->
+                            <!--                            <field name="review_date"/>-->
                         </group>
                     </sheet>
                 </form>
