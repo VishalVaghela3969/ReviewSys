@@ -9,5 +9,4 @@ class BusinessOwners(models.Model):
     business_id = fields.Many2one('business', string='Business')
     user_id = fields.Many2one('user', string='User')
     is_admin = fields.Boolean(string='Is Admin')
-
     # Add more fields or methods as needed
