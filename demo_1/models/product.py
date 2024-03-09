@@ -6,7 +6,7 @@ class Product(models.Model):
     _description = 'Product'
     _rec_name = 'name'
 
-    seq_name = fields.Char('product seq')
+    seq_name = fields.Char()
     name = fields.Char(string='Name', required=True)
     description = fields.Text(string='Description')
     currency_id = fields.Many2one('res.currency', default=lambda self: self.env.company.currency_id, string='Currency')

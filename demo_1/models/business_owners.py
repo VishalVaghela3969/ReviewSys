@@ -21,7 +21,7 @@ class BusinessOwners(models.Model):
             # Create tags from keywords
         return records
 
-    def write(self, vals): # return boolean >>>> True / False
+    def write(self, vals):  # return boolean >>>> True / False
         res = super(BusinessOwners, self).write(vals)
         if not self.seq_name:
             seq = self.env['ir.sequence'].next_by_code('business.owner.seq')

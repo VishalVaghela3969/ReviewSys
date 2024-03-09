@@ -5,7 +5,7 @@ class Category(models.Model):
     _description = 'Category'
     _rec_name = 'name'
 
-    seq_name = fields.Char('product seq')
+    seq_name = fields.Char()
     name = fields.Char(string='Name', required=True)
     description = fields.Text(string='Description')
 

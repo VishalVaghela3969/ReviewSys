@@ -16,7 +16,7 @@ class Business(models.Model):
         ('sat', 'Saturday'),
         ('sun', 'Sunday')
     ]
-    seq_name = fields.Char('product seq')
+    seq_name = fields.Char()
     name = fields.Char(string='Name')
     description = fields.Text(string='Description')
     # location = fields.Char(string='Location')

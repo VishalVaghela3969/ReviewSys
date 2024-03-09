@@ -7,7 +7,7 @@ class UserData(models.Model):
     _rec_name = 'username'
     _description = 'user registration'
 
-    seq_name = fields.Char('product seq')
+    seq_name = fields.Char()
     username = fields.Char(string='Username', required=True)
     email = fields.Char(string='Email', required=True)
     password = fields.Char(string='Password')

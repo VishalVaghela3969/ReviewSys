@@ -6,7 +6,7 @@ class UserFavorites(models.Model):
     _description = 'User Favorites'
     _rec_name = 'user_id'
 
-    seq_name = fields.Char('product seq')
+    seq_name = fields.Char()
     user_id = fields.Many2one('user', string='User')
     business_id = fields.Many2one('business', string='Business')
     product_id = fields.Many2one('product', string='Product')
@@ -35,4 +35,3 @@ class UserFavorites(models.Model):
                 seq = self.env['ir.sequence'].next_by_code('user.favourite.seq')
                 rec.seq_name = seq
         return res
-

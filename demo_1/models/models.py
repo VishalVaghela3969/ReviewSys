@@ -5,7 +5,7 @@ class Demo1(models.Model):
     _name = 'demo_1.demo_1'
     _description = 'demo_1.demo_1'
 
-    seq_name = fields.Char('product seq')
+    seq_name = fields.Char()
     name = fields.Char()
     value = fields.Integer()
     value2 = fields.Float(compute="_value_pc", store=True)

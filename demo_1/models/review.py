@@ -14,7 +14,7 @@ class BusinessReview(models.Model):
         ('4', '4 stars'),
         ('5', '5 stars'),
     ]
-    seq_name = fields.Char('product seq')
+    seq_name = fields.Char()
     business_id = fields.Many2one('business', string='Business', required=True)
     user_id = fields.Many2one('user', string='User', required=True)
     rating = fields.Selection(RATING_OPTIONS,string='Rating', required=True)

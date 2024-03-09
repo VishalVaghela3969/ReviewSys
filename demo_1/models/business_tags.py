@@ -6,7 +6,7 @@ class BusinessCategories(models.Model):
     _description = 'Business Categories'
     _rec_name = 'business_id'
 
-    seq_name = fields.Char('product seq')
+    seq_name = fields.Char()
     business_id = fields.Many2one('business', string='Business')
     category_id = fields.Many2one('category', string='Category')
 

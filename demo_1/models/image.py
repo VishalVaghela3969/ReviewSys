@@ -6,7 +6,7 @@ class Image(models.Model):
     _description = 'Product or Business Image'
     _rec_name = 'product_id'
 
-    seq_name = fields.Char('product seq')
+    seq_name = fields.Char()
     business_id = fields.Many2one('business', string='Business')
     product_id = fields.Many2one('product', string='Product')
     image_url = fields.Char(string='Image URL')

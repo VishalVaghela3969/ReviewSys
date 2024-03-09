@@ -5,7 +5,7 @@ class Tag(models.Model):
     _name = 'tag'
     _description = 'Tag'
 
-    seq_name = fields.Char('product seq')
+    seq_name = fields.Char()
     name = fields.Char(string='Name', required=True)
 
     @api.model
