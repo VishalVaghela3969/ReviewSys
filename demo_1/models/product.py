@@ -25,10 +25,10 @@ class Product(models.Model):
         return records
 
     def write(self, vals):
+        if 'seq_name' not in vals:
+            for rec in self:
+                if not rec.seq_name:
+                    seq = self.env['ir.sequence'].next_by_code('product.seq')
+                    rec.seq_name = seq
         res = super(Product, self).write(vals)
-        for rec in self:
-            # Create tags from keywords
-            if not rec.seq_name:
-                seq = self.env['ir.sequence'].next_by_code('product.seq')
-                rec.seq_name = seq
         return res

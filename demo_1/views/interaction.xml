@@ -1,0 +1,53 @@
+<odoo>
+    <data>
+        <!-- Form view for Interactions -->
+        <record id="view_interactions_form" model="ir.ui.view">
+            <field name="name">interactions.form.view</field>
+            <field name="model">interactions</field>
+            <field name="arch" type="xml">
+                <form string="Interactions">
+                    <sheet>
+                        <group>
+                            <group>
+                                <div class="oe_title">
+                                    <h1>
+                                        <field name="seq_name" readonly="1"/>
+                                    </h1>
+                                </div>
+                            </group>
+                            <group>
+                                <field name="user_id"/>
+                                <field name="review_id"/>
+                                <field name="interaction_type"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree view for Interactions -->
+        <record model="ir.ui.view" id="view_interactions_tree">
+            <field name="name">interactions.tree.view</field>
+            <field name="model">interactions</field>
+            <field name="arch" type="xml">
+                <tree string="Interactions">
+                    <field name="seq_name"/>
+                    <field name="user_id"/>
+                    <field name="review_id"/>
+                    <field name="interaction_type"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action for Interactions -->
+        <record model="ir.actions.act_window" id="action_interactions">
+            <field name="name">Interactions</field>
+            <field name="res_model">interactions</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menu item for Interactions -->
+        <menuitem name="Interactions" id="menu_interactions" parent="demo_1.business" action="action_interactions"/>
+    </data>
+</odoo>

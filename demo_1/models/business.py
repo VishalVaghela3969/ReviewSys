@@ -1,5 +1,5 @@
 from odoo import models, fields, api
-from odoo.exceptions import ValidationError
+from odoo.exceptions import ValidationError, UserError
 import re
 
 
@@ -35,8 +35,8 @@ class Business(models.Model):
     # owners = fields.Many2many('res.partner', string='Owners')
     social_media_links = fields.Text(string='Social Media Links')
     # tags = fields.Many2many('business.tag', string='Tags')
-    rating_count = fields.Integer(string='Rating Count',compute='_compute_ratings',store=True)
-    average_rating = fields.Float(string='Average Rating',compute='_compute_ratings',store=True)
+    rating_count = fields.Integer(string='Rating Count', compute='_compute_ratings', store=True)
+    average_rating = fields.Float(string='Average Rating', compute='_compute_ratings', store=True)
     status = fields.Selection([('active', 'Active'), ('inactive', 'Inactive'), ('renovation', 'Under Renovation')],
                               string='Status', default='active')
     featured = fields.Boolean(string='Featured')
@@ -123,3 +123,26 @@ class Business(models.Model):
         for record in self:
             if record.opening_time >= record.closing_time:
                 raise ValidationError("Closing time must be after opening time!")
+
+    def smart_ratings(self):
+        if len(self.ratings) == 1:
+            # If there is only one record, open a form view
+            return {
+                'type': 'ir.actions.act_window',
+                'name': 'Total Ratings',
+                'res_model': 'business.review',
+                'view_mode': 'form',
+                'res_id': self.ratings.id,
+            }
+        elif len(self.ratings) > 1:
+            # If there are multiple records, open a tree view
+            return {
+                'type': 'ir.actions.act_window',
+                'name': 'Total Ratings',
+                'res_model': 'business.review',
+                'view_mode': 'tree,form',
+                'domain': [('id', 'in', self.ratings.ids)],
+            }
+        else:
+            # No records found
+            raise UserError('No records found for smart ratings.')

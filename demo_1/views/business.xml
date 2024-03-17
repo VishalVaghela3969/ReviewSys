@@ -21,6 +21,16 @@
             <field name="arch" type="xml">
                 <form string="Create Menu">
                     <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="smart_ratings"
+                                    type="object"
+                                    string="Total Ratings"
+                                    class="oe_stat_button"
+                                    icon='fa-star'
+                            >
+                                <field name="rating_count" widget="statinfo"/>
+                            </button>
+                        </div>
                         <notebook>
                             <!-- General Information Tab -->
                             <page string="General Information">

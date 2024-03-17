@@ -10,6 +10,7 @@ class BusinessOwners(models.Model):
     business_id = fields.Many2one('business', string='Business')
     user_id = fields.Many2one('user', string='User')
     is_admin = fields.Boolean(string='Is Admin')
+
     # Add more fields or methods as needed
 
     @api.model_create_multi
@@ -21,11 +22,21 @@ class BusinessOwners(models.Model):
             # Create tags from keywords
         return records
 
-    def write(self, vals):  # return boolean >>>> True / False
+    # def write(self, vals):  # return boolean >>>> True / False
+    #     res = super(BusinessOwners, self).write(vals)
+    #     if not self.seq_name:
+    #         seq = self.env['ir.sequence'].next_by_code('business.owner.seq')
+    #         vals.update({
+    #             'seq_name': seq
+    #         })
+    #     return res
+
+    def write(self, vals):
+        if 'seq_name' not in vals:
+            for rec in self:
+                if not rec.seq_name:
+                    seq = self.env['ir.sequence'].next_by_code('business.owner.seq')
+                    rec.seq_name = seq
         res = super(BusinessOwners, self).write(vals)
-        if not self.seq_name:
-            seq = self.env['ir.sequence'].next_by_code('business.owner.seq')
-            vals.update({
-                'seq_name': seq
-            })
         return res
+

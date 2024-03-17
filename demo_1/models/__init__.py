@@ -12,3 +12,4 @@ from . import business_tags
 from . import review_comments
 from . import business_owners
 from . import user_favourite
+from . import interaction

@@ -17,7 +17,7 @@ class BusinessReview(models.Model):
     seq_name = fields.Char()
     business_id = fields.Many2one('business', string='Business', required=True)
     user_id = fields.Many2one('user', string='User', required=True)
-    rating = fields.Selection(RATING_OPTIONS,string='Rating', required=True)
+    rating = fields.Selection(RATING_OPTIONS,string='Rating', required=True) 
     review_text = fields.Text(string='Review Text')
     review_date = fields.Date(string='Review Date', default=fields.Date.today)
 
@@ -53,11 +53,10 @@ class BusinessReview(models.Model):
         return records
 
     def write(self, vals):
+        if 'seq_name' not in vals:
+            for rec in self:
+                if not rec.seq_name:
+                    seq = self.env['ir.sequence'].next_by_code('business.review.seq')
+                    rec.seq_name = seq
         res = super(BusinessReview, self).write(vals)
-        for rec in self:
-            # Create tags from keywords
-            if not rec.seq_name:
-                seq = self.env['ir.sequence'].next_by_code('business.review.seq')
-                rec.seq_name = seq
         return res
-

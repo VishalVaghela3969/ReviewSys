@@ -34,11 +34,13 @@
                             <group>
 
                             </group>
-                            <field name="review_id"/>
-                            <field name="user_id"/>
-                            <field name="comment_text"/>
-                            <!--                            <field name="comment_date"/>-->
-                            <!-- Add more fields here -->
+                            <group>
+                                <field name="review_id"/>
+                                <field name="user_id"/>
+                                <field name="comment_text"/>
+                                <!--                            <field name="comment_date"/>-->
+                                <!-- Add more fields here -->
+                            </group>
                         </group>
                     </sheet>
                 </form>

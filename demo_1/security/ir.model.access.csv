@@ -11,3 +11,5 @@ demo_1.access_business_categories,access_business_categories,demo_1.model_busine
 demo_1.access_reviews_comments,access_reviews_comments,demo_1.model_reviews_comments,base.group_user,1,1,1,1
 demo_1.access_business_owners,access_business_owners,demo_1.model_business_owners,base.group_user,1,1,1,1
 demo_1.access_user_favorites,access_user_favorites,demo_1.model_user_favorites,base.group_user,1,1,1,1
+demo_1.access_interactions,access_interactions,demo_1.model_interactions,base.group_user,1,1,1,1
+

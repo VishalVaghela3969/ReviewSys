@@ -19,6 +19,16 @@
             <field name="arch" type="xml">
                 <form string="User Data">
                     <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="rates"
+                                    type="object"
+                                    string="Total Ratings"
+                                    class="oe_stat_button"
+                                    icon='fa-star'
+                            >
+                                <field name="rating_history" widget="statinfo"/>
+                            </button>
+                        </div>
                         <group>
                             <group>
                                 <div class="oe_title">
@@ -30,10 +40,17 @@
                             <group>
 
                             </group>
-                            <field name="username"/>
-                            <field name="email"/>
-                            <field name="password"/>
+                            <group>
+                                <field name="username"/>
+                                <field name="email"/>
+                                <field name="password"/>
+                            </group>
                         </group>
+                        <notebook>
+                            <page string="Rating" name="Rating">
+                                <field name="rating_history"/>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>

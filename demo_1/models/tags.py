@@ -28,10 +28,10 @@ class Tag(models.Model):
         return records
 
     def write(self, vals):
+        if 'seq_name' not in vals:
+            for rec in self:
+                if not rec.seq_name:
+                    seq = self.env['ir.sequence'].next_by_code('tags.seq')
+                    rec.seq_name = seq
         res = super(Tag, self).write(vals)
-        for rec in self:
-            # Create tags from keywords
-            if not rec.seq_name:
-                seq = self.env['ir.sequence'].next_by_code('tags.seq')
-                rec.seq_name = seq
         return res

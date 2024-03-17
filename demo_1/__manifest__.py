@@ -39,5 +39,6 @@
         'views/review_comments.xml',
         'views/business_owner.xml',
         'views/user_favourite.xml',
+        'views/interaction.xml',
     ]
 }

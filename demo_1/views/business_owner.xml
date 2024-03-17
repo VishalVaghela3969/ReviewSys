@@ -19,10 +19,12 @@
                             <group>
 
                             </group>
-                            <field name="business_id"/>
-                            <field name="user_id"/>
-                            <field name="is_admin"/>
-                            <!-- Add more fields here -->
+                            <group>
+                                <field name="business_id"/>
+                                <field name="user_id"/>
+                                <field name="is_admin"/>
+                                <!-- Add more fields here -->
+                            </group>
                         </group>
                     </sheet>
                 </form>

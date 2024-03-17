@@ -9,9 +9,7 @@
             <field eval="1" name="number_next"/>
             <field eval="1" name="number_increment"/>
         </record>
-    </data>
 
-    <data noupdate="1">
         <record id="sequence_business_owner" model="ir.sequence">
             <field name="name">Business sequence</field>
             <field name="code">business.owner.seq</field>
@@ -20,9 +18,7 @@
             <field eval="1" name="number_next"/>
             <field eval="1" name="number_increment"/>
         </record>
-    </data>
 
-    <data noupdate="1">
         <record id="sequence_business_tags" model="ir.sequence">
             <field name="name">Business sequence</field>
             <field name="code">business.tags.seq</field>
@@ -31,9 +27,7 @@
             <field eval="1" name="number_next"/>
             <field eval="1" name="number_increment"/>
         </record>
-    </data>
 
-    <data noupdate="1">
         <record id="sequence_category" model="ir.sequence">
             <field name="name">Business sequence</field>
             <field name="code">category.seq</field>
@@ -42,9 +36,7 @@
             <field eval="1" name="number_next"/>
             <field eval="1" name="number_increment"/>
         </record>
-    </data>
 
-    <data noupdate="1">
         <record id="sequence_image" model="ir.sequence">
             <field name="name">Business sequence</field>
             <field name="code">image.seq</field>
@@ -53,9 +45,7 @@
             <field eval="1" name="number_next"/>
             <field eval="1" name="number_increment"/>
         </record>
-    </data>
 
-    <data noupdate="1">
         <record id="sequence_product" model="ir.sequence">
             <field name="name">Business sequence</field>
             <field name="code">product.seq</field>
@@ -64,9 +54,7 @@
             <field eval="1" name="number_next"/>
             <field eval="1" name="number_increment"/>
         </record>
-    </data>
 
-    <data noupdate="1">
         <record id="sequence_business_review" model="ir.sequence">
             <field name="name">Business sequence</field>
             <field name="code">business.review.seq</field>
@@ -75,9 +63,7 @@
             <field eval="1" name="number_next"/>
             <field eval="1" name="number_increment"/>
         </record>
-    </data>
 
-    <data noupdate="1">
         <record id="sequence_review_comments" model="ir.sequence">
             <field name="name">Business sequence</field>
             <field name="code">review.comments.seq</field>
@@ -86,9 +72,7 @@
             <field eval="1" name="number_next"/>
             <field eval="1" name="number_increment"/>
         </record>
-    </data>
 
-    <data noupdate="1">
         <record id="sequence_tags" model="ir.sequence">
             <field name="name">Business sequence</field>
             <field name="code">tags.seq</field>
@@ -97,9 +81,7 @@
             <field eval="1" name="number_next"/>
             <field eval="1" name="number_increment"/>
         </record>
-    </data>
 
-    <data noupdate="1">
         <record id="sequence_user" model="ir.sequence">
             <field name="name">Business sequence</field>
             <field name="code">user.seq</field>
@@ -108,13 +90,20 @@
             <field eval="1" name="number_next"/>
             <field eval="1" name="number_increment"/>
         </record>
-    </data>
 
-    <data noupdate="1">
         <record id="sequence_user_favourite" model="ir.sequence">
             <field name="name">Business sequence</field>
             <field name="code">user.favourite.seq</field>
             <field name="prefix">UF/%(year)s</field>
+            <field name="padding">4</field>
+            <field eval="1" name="number_next"/>
+            <field eval="1" name="number_increment"/>
+        </record>
+
+         <record id="sequence_user_interaction" model="ir.sequence">
+            <field name="name">User Interactions</field>
+            <field name="code">user.interactions</field>
+            <field name="prefix">UI/%(year)s</field>
             <field name="padding">4</field>
             <field eval="1" name="number_next"/>
             <field eval="1" name="number_increment"/>
