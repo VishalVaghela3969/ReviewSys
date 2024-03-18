@@ -23,17 +23,18 @@
             <field name="arch" type="xml">
                 <form string="Reviews Comments">
                     <sheet>
-                        <group>
-                            <group>
-                                <div class="oe_title">
-                                    <h1>
-                                        <field name="seq_name" readonly="1"/>
-                                    </h1>
-                                </div>
-                            </group>
-                            <group>
 
-                            </group>
+                        <group>
+                            <div class="oe_title">
+                                <h1>
+                                    <field name="seq_name" readonly="1"/>
+                                </h1>
+                            </div>
+                        </group>
+                        <group>
+
+                        </group>
+                        <group>
                             <group>
                                 <field name="review_id"/>
                                 <field name="user_id"/>

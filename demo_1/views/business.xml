@@ -54,7 +54,7 @@
                                     </group>
                                     <group>
                                         <!--                                        <field name="opening_hours"/>-->
-                                        <field name="day_of_week"/>
+                                        <field name="day_of_week" widget="checkbox"/>
                                         <field name="opening_time"/>
                                         <field name="closing_time"/>
                                         <field name="status"/>

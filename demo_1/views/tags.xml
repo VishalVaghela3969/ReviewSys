@@ -22,17 +22,18 @@
             <field name="arch" type="xml">
                 <form string="Tag">
                     <sheet>
-                        <group>
-                            <group>
-                                <div class="oe_title">
-                                    <h1>
-                                        <field name="seq_name" readonly="1"/>
-                                    </h1>
-                                </div>
-                            </group>
-                            <group>
 
-                            </group>
+                        <group>
+                            <div class="oe_title">
+                                <h1>
+                                    <field name="seq_name" readonly="1"/>
+                                </h1>
+                            </div>
+                        </group>
+                        <group>
+
+                        </group>
+                        <group>
                             <group>
                                 <field name="name"/>
                                 <!-- Add more fields here -->

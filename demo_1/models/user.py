@@ -13,6 +13,8 @@ class UserData(models.Model):
     password = fields.Char(string='Password')
     password_hash = fields.Char(string='Password Hash')
     registration_date = fields.Datetime(string='Registration Date', default=fields.Datetime.now)
+    profile = fields.Image(string='Business Logo', max_width=128, max_height=128, attachment=True)
+
     # last_login_date = fields.Datetime(string='Last Login Date')
 
     rating_history = fields.One2many('business.review', 'user_id', string='Rating History')

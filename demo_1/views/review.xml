@@ -21,17 +21,18 @@
             <field name="arch" type="xml">
                 <form string="Business Review">
                     <sheet>
-                        <group>
-                            <group>
-                                <div class="oe_title">
-                                    <h1>
-                                        <field name="seq_name" readonly="1"/>
-                                    </h1>
-                                </div>
-                            </group>
-                            <group>
 
-                            </group>
+                        <group>
+                            <div class="oe_title">
+                                <h1>
+                                    <field name="seq_name" readonly="1"/>
+                                </h1>
+                            </div>
+                        </group>
+                        <group>
+
+                        </group>
+                        <group>
                             <group>
                                 <field name="business_id"/>
                                 <field name="user_id"/>

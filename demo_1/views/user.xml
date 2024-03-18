@@ -29,23 +29,22 @@
                                 <field name="rating_history" widget="statinfo"/>
                             </button>
                         </div>
+                        <field name="profile" widget="image" class="oe_avatar"/>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="seq_name" readonly="1"/>
+                            </h1>
+                        </div>
                         <group>
-                            <group>
-                                <div class="oe_title">
-                                    <h1>
-                                        <field name="seq_name" readonly="1"/>
-                                    </h1>
-                                </div>
-                            </group>
-                            <group>
 
-                            </group>
-                            <group>
-                                <field name="username"/>
-                                <field name="email"/>
-                                <field name="password"/>
-                            </group>
                         </group>
+
+                        <group>
+                            <field name="username"/>
+                            <field name="email"/>
+                            <field name="password"/>
+                        </group>
+
                         <notebook>
                             <page string="Rating" name="Rating">
                                 <field name="rating_history"/>

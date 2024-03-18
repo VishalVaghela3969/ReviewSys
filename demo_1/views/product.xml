@@ -19,15 +19,13 @@
                             <group>
 
                             </group>
-                            <group>
-                                <field name="name"/>
-                                <field name="description"/>
-                                <field name="currency_id"/>
-                                <field name="price" widget="monetary"/>
-                                <field name="category_id"/>
-                                <field name="image" widget="image"/>
-                                <!-- Add more fields here -->
-                            </group>
+                            <field name="name"/>
+                            <field name="description"/>
+                            <field name="currency_id"/>
+                            <field name="price" widget="monetary"/>
+                            <field name="category_id"/>
+                            <field name="image" widget="monetary"/>
+                            <!-- Add more fields here -->
                         </group>
                         <notebook>
                             <page string="Business">
