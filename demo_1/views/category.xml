@@ -15,13 +15,11 @@
                                 </h1>
                             </div>
                         </group>
-                        <group> </group>
+
                         <group>
-                            <group>
-                                <field name="name"/>
-                                <field name="description"/>
-                                <!-- Add more fields here -->
-                            </group>
+                            <field name="name"/>
+                            <field name="description"/>
+                            <!-- Add more fields here -->
                         </group>
                     </sheet>
                 </form>
