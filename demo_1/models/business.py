@@ -46,6 +46,7 @@ class Business(models.Model):
     description_short = fields.Text(string='Short Description')
     keywords = fields.Char(string='Keywords')
     ratings = fields.One2many('business.review', 'business_id', string='Ratings')
+    
 
     @api.model_create_multi
     def create(self, vals_list):

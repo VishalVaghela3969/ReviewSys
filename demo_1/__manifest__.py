@@ -40,5 +40,6 @@
         'views/business_owner.xml',
         'views/user_favourite.xml',
         'views/interaction.xml',
-    ]
+    ],
+    'application': True
 }
