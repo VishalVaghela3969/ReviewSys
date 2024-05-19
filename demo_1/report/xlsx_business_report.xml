@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="business_xlsx" model="ir.actions.report">
+        <field name="name">Print to XLSX</field>
+        <field name="model">business</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">demo_1.business</field>
+        <field name="binding_model_id" ref="model_business"/>
+        <field name="report_file">business</field>
+    </record>
+</odoo>

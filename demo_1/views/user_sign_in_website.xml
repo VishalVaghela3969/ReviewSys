@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="menu_user_sign_up_form" model="website.menu">
+            <field name="name">Sign-Up</field>
+            <field name="url">/signup</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence" type="int">11</field>
+        </record>
+
+        <template id="sign_up_form" name="Sign - Up">
+            <t t-call="website.layout">
+                <div id="wrap">
+                    <div class="oe_structure">
+                        <br></br>
+                        <div class="container">
+                            <form role="form" method="post" action="/create/user">
+                                <div class="s_website_form_rows row s_col_no_bgcolor">
+                                    <div class="s_website_form_field mb-3 col-9 s_website_form_custom s_website_form_required"
+                                         data-type="char" data-name="Field" data-visibility-condition=""
+                                         data-visibility-between="">
+                                        <div class="row s_col_no_resize s_col_no_bgcolor">
+                                            <label class="col-form-label col-sm-auto s_website_form_label "
+                                                   style="width: 200px" for="username">
+                                                <span class="s_website_form_label_content">Username</span>
+                                                <span class="s_website_form_mark">*</span>
+                                            </label>
+                                            <div class="col-sm">
+                                                <input type="text" class="form-control s_website_form_input"
+                                                       name="username"
+                                                       required="1" id="username"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="s_website_form_field mb-3 col-9 s_website_form_custom s_website_form_required"
+                                         data-type="char" data-name="Field" data-visibility-condition=""
+                                         data-visibility-between="">
+                                        <div class="row s_col_no_resize s_col_no_bgcolor">
+                                            <label class="col-form-label col-sm-auto s_website_form_label "
+                                                   style="width: 200px" for="email">
+                                                <span class="s_website_form_label_content">E-Mail</span>
+                                                <span class="s_website_form_mark">*</span>
+                                            </label>
+                                            <div class="col-sm">
+                                                <input type="text" class="form-control s_website_form_input"
+                                                       name="email"
+                                                       required="1" id="email"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="s_website_form_field mb-3 col-9 s_website_form_custom s_website_form_required"
+                                         data-type="password" data-name="Field" data-visibility-condition=""
+                                         data-visibility-between="">
+                                        <div class="row s_col_no_resize s_col_no_bgcolor">
+                                            <label class="col-form-label col-sm-auto s_website_form_label "
+                                                   style="width: 200px" for="password">
+                                                <span class="s_website_form_label_content">Password</span>
+                                                <span class="s_website_form_mark">*</span>
+                                            </label>
+                                            <div class="col-sm">
+                                                <input type="password" class="form-control s_website_form_input"
+                                                       name="password" required="1" id="password"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="s_website_form_field mb-0 py-2 col-9 s_website_form_submit"
+                                         data-name="Submit Button">
+                                        <div style="width: 200px;" class="s_website_form_label"></div>
+                                        <button type="submit"
+                                                class="btn btn-primary btn-lg s_website_form_send o_default_snippet_text">
+                                            Login
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+
+    </data>
+</odoo>

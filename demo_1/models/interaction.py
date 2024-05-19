@@ -4,6 +4,7 @@ from odoo import models, fields, api
 class Interactions(models.Model):
     _name = 'interactions'
     _description = 'User Interactions'
+    _rec_name = 'user_id'
 
     seq_name = fields.Char()
     user_id = fields.Many2one('user', string='User', required=True)

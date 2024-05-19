@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+from odoo.exceptions import UserError
 
 
 class UserData(models.Model):
@@ -40,4 +41,24 @@ class UserData(models.Model):
         return res
 
     def rates(self):
-        pass
+        if len(self.rating_history) == 1:
+            # If there is only one record, open a form view
+            return {
+                'type': 'ir.actions.act_window',
+                'name': 'Total Ratings',
+                'res_model': 'business.review',
+                'view_mode': 'form',
+                'res_id': self.rating_history.id,
+            }
+        elif len(self.rating_history) > 1:
+            # If there are multiple records, open a tree view
+            return {
+                'type': 'ir.actions.act_window',
+                'name': 'Total Ratings',
+                'res_model': 'business.review',
+                'view_mode': 'tree,form',
+                'domain': [('id', 'in', self.rating_history.ids)],
+            }
+        else:
+            # No records found
+            raise UserError('No records found for rates.')

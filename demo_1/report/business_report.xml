@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="business_detail_report" model="ir.actions.report">
+        <field name="name">Print Business Detail</field>
+        <field name="model">business</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">demo_1.print_business_detail</field>
+        <field name="report_file">demo_1.print_business_detail</field>
+        <field name="print_report_name">'Print Business - %s' % (object.name).replace('/', '')</field>
+        <field name="binding_model_id" ref="demo_1.model_business"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="print_business_detail">
+        <t t-call="web.basic_layout">
+            <div class="page">
+                <t t-foreach="docs" t-as="business">
+                    <div class="col-md-6">
+                        <table style="width:243pt; height:153pt; border: 1pt solid black; border-collapse:separate; border-radius:8pt; margin:5pt">
+                            <td style="width:33%;" valign="center">
+                                <table style="width:77pt; height:150pt" class="table-borderless">
+                                    <tr>
+                                        <td>
+                                            <div align="center" style="font-size:10pt;margin-bottom:5pt;">
+                                                <t t-esc="business.average_rating"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:70%;">
+                                        <td align="center" valign="center">
+                                            <img t-if="business.business_logo" t-att-src="image_data_uri(business.business_logo)"
+                                                 style="max-height:85pt;max-width:90%" alt="Business Image"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td style="width:67%" valign="center">
+                                <table style="width:155pt; height:85pt" class="table-borderless">
+                                    <tr>
+                                        <th>
+                                            <div style="font-size:15pt; margin-bottom:0pt;margin-top:0pt;"
+                                                 align="center">
+                                                <t t-if="business.name" t-esc="business.name"/>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div align="center" style="font-size:10pt;margin-bottom:5pt;">
+                                                <t t-if="business.email" t-esc="business.email"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div align="center" style="font-size:10pt;margin-bottom:5pt;">
+
+                                                <div t-if="business.rating_count" t-field="business.rating_count"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div align="center" style="font-size:10pt;margin-bottom:5pt;">
+
+                                                <div t-if="business.rating_count" t-field="business.country_id"/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </table>
+                    </div>
+                </t>
+            </div>
+        </t>
+    </template>
+</odoo>

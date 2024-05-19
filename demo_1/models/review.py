@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
 
 
 class BusinessReview(models.Model):
@@ -17,7 +18,7 @@ class BusinessReview(models.Model):
     seq_name = fields.Char()
     business_id = fields.Many2one('business', string='Business', required=True)
     user_id = fields.Many2one('user', string='User', required=True)
-    rating = fields.Selection(RATING_OPTIONS,string='Rating', required=True) 
+    rating = fields.Selection(RATING_OPTIONS, string='Rating', required=True)
     review_text = fields.Text(string='Review Text')
     review_date = fields.Date(string='Review Date', default=fields.Date.today)
 
@@ -44,12 +45,15 @@ class BusinessReview(models.Model):
     def create(self, vals_list):
         records = super(BusinessReview, self).create(vals_list)
         for rec in records:
+            # user_id = vals_list['user_id']
+            # business_id = vals_list['business_id']
+            # existing_review = self.search([('user_id', '=', user_id), ('business_id', '=', business_id)])
+            # if existing_review:
+            #     raise ValidationError("You can only rate a business once.")
             seq = self.env['ir.sequence'].next_by_code('business.review.seq')
             rec.seq_name = seq
             if rec.business_id:
                 rec.business_id._compute_ratings()
-            # Create tags from keywords if needed
-            # self.env['tag'].create_tags_from_keywords(rec)
         return records
 
     def write(self, vals):
@@ -60,3 +64,18 @@ class BusinessReview(models.Model):
                     rec.seq_name = seq
         res = super(BusinessReview, self).write(vals)
         return res
+
+    _sql_constraints = [
+        ('unique_user_business', 'UNIQUE(user_id, business_id)', 'You can only rate a business once.')
+    ]
+
+    @api.constrains('user_id', 'business_id')
+    def _check_unique_user_business(self):
+        for record in self:
+            existing_reviews = self.env['business.review'].search([
+                ('user_id', '=', record.user_id.id),
+                ('business_id', '=', record.business_id.id),
+                ('id', '!=', record.id)  # Exclude the current record if it already exists
+            ])
+            if existing_reviews:
+                raise ValidationError("You can only rate a business once.")
